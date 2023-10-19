@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AnimalControllerTest {
+class CarControllerTest {
 
     private final static String BASE_URI = "/api/animals";
 
@@ -26,9 +26,9 @@ class AnimalControllerTest {
     private ObjectMapper objectMapper; // Wandelt JSON in Java Objekte um und umgekehrt
 
     @Test
-    public void testHandleAnimalNotFound() throws Exception {
-        ErrorMessage errorMessage = new ErrorMessage("Only 'dog' is allowed");
-        mockMvc.perform(MockMvcRequestBuilders.get(BASE_URI + "/cat"))
+    public void testHandleCarNotFound() throws Exception {
+        ErrorMessage errorMessage = new ErrorMessage("Only 'porsche' allowed");
+        mockMvc.perform(MockMvcRequestBuilders.get(BASE_URI + "/bmw"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(errorMessage)));
     }
